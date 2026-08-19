@@ -1,0 +1,2894 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elsayd Elmaghraby | Portfolio</title>
+<link rel="icon" type="image/png" href="2.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ============================================
+                   CSS VARIABLES & RESET
+                ============================================ */
+        :root {
+            --olive-deep: #35402B;
+            --olive-dark: #465437;
+            --olive: #68734A;
+            --olive-soft: #89956D;
+            --olive-pale: #B5C09E;
+            --beige: #E9E1D3;
+            --cream: #F7F4EC;
+            --ivory: #FBF9F4;
+            --earth: #292A24;
+            --muted: #777365;
+            --gold-muted: #B29A68;
+            --font-arabic: 'Cairo', sans-serif;
+            --font-english: 'Playfair Display', 'Cormorant Garamond', serif;
+            --font-sans: 'Manrope', sans-serif;
+            --radius: 12px;
+            --radius-sm: 6px;
+            --transition: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            --shadow-soft: 0 4px 30px rgba(0, 0, 0, 0.04);
+            --shadow-medium: 0 8px 40px rgba(0, 0, 0, 0.06);
+            --border-thin: 1px solid rgba(104, 115, 74, 0.12);
+            --bg-primary: var(--ivory);
+            --bg-secondary: var(--cream);
+            --bg-card: var(--ivory);
+            --text-primary: var(--earth);
+            --text-secondary: var(--muted);
+            --border-color: rgba(104, 115, 74, 0.12);
+            --nav-bg: rgba(251, 249, 244, 0.88);
+            --shadow-color: rgba(0, 0, 0, 0.04);
+            --toast-bg: var(--earth);
+            --toast-text: var(--ivory);
+        }
+
+        [data-theme="dark"] {
+            --olive-deep: #2A3422;
+            --olive-dark: #3A4A2E;
+            --olive: #7A8A5A;
+            --olive-soft: #9AAA7A;
+            --olive-pale: #C5D0AE;
+            --beige: #2D2A24;
+            --cream: #35322C;
+            --ivory: #1E1C18;
+            --earth: #E8E0D6;
+            --muted: #A09888;
+            --gold-muted: #C9B078;
+            --bg-primary: var(--ivory);
+            --bg-secondary: var(--cream);
+            --bg-card: #25221E;
+            --text-primary: var(--earth);
+            --text-secondary: var(--muted);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --nav-bg: rgba(30, 28, 24, 0.92);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --toast-bg: var(--earth);
+            --toast-text: var(--ivory);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-arabic);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+        button {
+            cursor: pointer;
+            font-family: var(--font-arabic);
+            border: none;
+            background: none;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ============================================
+                   SCROLL ANIMATIONS
+                ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(48px);
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ============================================
+                   BUTTONS
+                ============================================ */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--olive);
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 0;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: var(--transition);
+            border: 1px solid var(--olive);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--olive-dark);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 0;
+        }
+        .btn-primary:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .btn-primary span,
+        .btn-primary i {
+            position: relative;
+            z-index: 1;
+        }
+        .btn-primary:hover {
+            border-color: var(--olive-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--text-primary);
+            padding: 16px 36px;
+            border-radius: 0;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid var(--text-primary);
+            transition: var(--transition);
+            position: relative;
+        }
+        .btn-secondary:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--olive);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+        .btn-ghost:hover {
+            gap: 16px;
+            border-bottom-color: var(--olive);
+        }
+
+        /* ============================================
+                   NAVIGATION
+                ============================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+        .navbar.scrolled {
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 0;
+            box-shadow: 0 1px 20px var(--shadow-color);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: var(--font-english);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--olive-dark);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        [data-theme="dark"] .logo {
+            color: var(--olive-soft);
+        }
+        .logo .dot {
+            color: var(--gold-muted);
+            font-weight: 400;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-dropdown-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-radius: 0;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .nav-dropdown-btn:hover {
+            border-color: var(--olive);
+            color: var(--olive);
+        }
+        .nav-dropdown-btn i {
+            font-size: 0.6rem;
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 140px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-medium);
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+        .nav-dropdown-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-dropdown-menu button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 10px 18px;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            transition: var(--transition);
+            text-align: right;
+        }
+        .nav-dropdown-menu button:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        .nav-dropdown-menu button.active {
+            color: var(--olive);
+            background: rgba(104, 115, 74, 0.06);
+        }
+        .nav-dropdown-menu .divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 6px 12px;
+        }
+
+        .theme-toggle-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            font-size: 1rem;
+            color: var(--text-secondary);
+            background: transparent;
+            border-radius: 0;
+        }
+        .theme-toggle-icon:hover {
+            border-color: var(--olive);
+            color: var(--olive);
+        }
+        .theme-toggle-icon .dark-icon {
+            display: none;
+        }
+        [data-theme="dark"] .theme-toggle-icon .light-icon {
+            display: none;
+        }
+        [data-theme="dark"] .theme-toggle-icon .dark-icon {
+            display: inline;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-nav {
+            display: none !important;
+        }
+        .mobile-overlay {
+            display: none !important;
+        }
+
+        /* ============================================
+                   HERO
+                ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--bg-primary);
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-english);
+            font-size: 4.2rem;
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+        }
+        .hero-content h1 .highlight {
+            color: var(--olive);
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-family: var(--font-sans);
+            letter-spacing: 0.5px;
+        }
+
+        .hero-content .bio {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 440px;
+            margin-bottom: 36px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+        }
+
+        .olive-art {
+            width: 100%;
+            max-width: 520px;
+            aspect-ratio: 1/1.1;
+            position: relative;
+        }
+
+        .olive-art svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 4px 40px rgba(104, 115, 74, 0.06));
+        }
+        [data-theme="dark"] .olive-art svg path {
+            stroke: var(--olive-soft);
+        }
+        [data-theme="dark"] .olive-art svg ellipse {
+            fill: var(--olive-soft);
+        }
+        [data-theme="dark"] .olive-art svg circle {
+            fill: var(--olive-soft);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.5;
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            z-index: 2;
+        }
+        .scroll-indicator .line {
+            width: 1px;
+            height: 40px;
+            background: var(--text-secondary);
+            opacity: 0.3;
+        }
+        .scroll-indicator .line-inner {
+            width: 1px;
+            height: 100%;
+            background: var(--olive);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+        @keyframes scrollLine {
+            0%,
+            100% {
+                transform: scaleY(0);
+                transform-origin: top;
+            }
+            50% {
+                transform: scaleY(1);
+                transform-origin: top;
+            }
+        }
+
+        /* ============================================
+                   SECTION HEADERS
+                ============================================ */
+        .section-header {
+            margin-bottom: 56px;
+            position: relative;
+        }
+        .section-header .label {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            display: block;
+            margin-bottom: 6px;
+        }
+        .section-header h2 {
+            font-family: var(--font-english);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.1;
+        }
+        .section-header .sub {
+            color: var(--text-secondary);
+            margin-top: 8px;
+            font-size: 1rem;
+            font-weight: 300;
+            max-width: 500px;
+        }
+
+        /* ============================================
+                   WORK / PROJECTS - CARDS SMALLER FOR DESKTOP
+                ============================================ */
+        .work {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .work::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -20px;
+            width: 200px;
+            height: 300px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 300'%3E%3Cpath d='M50 280 C40 230 20 200 30 160 C40 120 80 100 110 120 C140 140 140 180 120 200 C100 220 80 210 70 190 C60 170 70 150 90 140' stroke='%2368734A' stroke-width='1.5' fill='none' opacity='0.15'/%3E%3Cpath d='M110 120 C120 90 150 70 170 80 C190 90 180 120 160 130 C140 140 130 130 130 110' stroke='%2368734A' stroke-width='1' fill='none' opacity='0.1'/%3E%3C/svg%3E") no-repeat;
+            background-size: contain;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+        [data-theme="dark"] .work::before {
+            opacity: 0.15;
+        }
+
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            margin-bottom: 48px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4px;
+            position: relative;
+            z-index: 1;
+        }
+        .filter-tabs button {
+            padding: 10px 28px 12px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: var(--font-sans);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            border: none;
+        }
+        .filter-tabs button::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--olive);
+            transition: var(--transition);
+        }
+        .filter-tabs button.active::after,
+        .filter-tabs button:hover::after {
+            width: 100%;
+        }
+        .filter-tabs button.active,
+        .filter-tabs button:hover {
+            color: var(--text-primary);
+        }
+        .filter-tabs button.active {
+            color: var(--olive);
+        }
+
+        /* ── Desktop: 3 columns, smaller cards ── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card {
+            position: relative;
+            background: transparent;
+            transition: var(--transition);
+            border: none;
+            box-shadow: none;
+            cursor: pointer;
+        }
+
+       .project-card .card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 12px;
+    transition: var(--transition);
+}
+        .project-card .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* استخدام contain بدلاً من cover */
+    transition: var(--transition);
+}
+        .project-card .card-img .placeholder-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 3rem;
+            color: var(--olive-soft);
+            opacity: 0.3;
+        }
+
+        .project-card .card-number {
+            font-family: var(--font-english);
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--olive-pale);
+            line-height: 1;
+            margin-bottom: 2px;
+            letter-spacing: -2px;
+        }
+
+        .project-card .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+        .project-card .card-meta .category {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+        .project-card .card-meta .dot-sep {
+            color: var(--olive-soft);
+            font-size: 0.4rem;
+        }
+
+        .project-card .card-title {
+            font-family: var(--font-english);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 3px;
+            line-height: 1.2;
+        }
+
+        .project-card .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 300;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .project-card .card-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 10px;
+        }
+        .project-card .card-tech span {
+            font-family: var(--font-sans);
+            font-size: 0.55rem;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            padding: 2px 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 0;
+        }
+
+        .project-card .card-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .project-card .card-actions .btn-sm {
+            padding: 4px 12px;
+            font-weight: 600;
+            font-size: 0.65rem;
+            transition: var(--transition);
+            border: 1px solid var(--olive);
+            color: var(--olive);
+            background: transparent;
+            letter-spacing: 0.5px;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+        }
+        .project-card .card-actions .btn-sm-primary {
+            background: var(--olive);
+            color: #fff;
+            border-color: var(--olive);
+        }
+        .project-card .card-actions .btn-sm-primary:hover {
+            background: var(--olive-dark);
+            border-color: var(--olive-dark);
+        }
+        .project-card .card-actions .btn-sm:hover:not(.btn-sm-primary) {
+            background: var(--olive);
+            color: #fff;
+        }
+
+        .project-card:hover .card-img img {
+            transform: scale(1.03);
+        }
+        .project-card:hover .card-img {
+            box-shadow: var(--shadow-medium);
+        }
+        .project-card .card-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--olive);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        .project-card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .project-card .olive-leaf-hover {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+        .project-card:hover .olive-leaf-hover {
+            opacity: 0.15;
+            transform: rotate(20deg) scale(1.1);
+        }
+
+        .project-card.featured {
+            grid-column: 1 / -1;
+        }
+        .project-card.featured .card-img {
+            aspect-ratio: 16/7;
+            overflow: hidden;
+        }
+        .project-card.featured .card-title {
+            font-size: 2rem;
+        }
+
+        /* ============================================
+                   SKILLS
+                ============================================ */
+        .skills {
+            padding: 100px 0;
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .skills-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+            cursor: default;
+            position: relative;
+        }
+        .skill-item:hover {
+            background: rgba(104, 115, 74, 0.02);
+            padding-right: 28px;
+        }
+        .skill-item .skill-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .skill-item .skill-num {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+            min-width: 28px;
+        }
+        .skill-item .skill-name {
+            font-family: var(--font-english);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .skill-item .skill-icon {
+            color: var(--olive-soft);
+            font-size: 1rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .skill-item:hover .skill-icon {
+            opacity: 1;
+        }
+        .skill-item .skill-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+            margin: 0 20px;
+            max-width: 60px;
+        }
+        .skill-item .skill-tag {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            opacity: 0.4;
+        }
+
+        .skills-olive {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .skills-olive svg {
+            max-width: 280px;
+            width: 100%;
+            opacity: 0.5;
+        }
+        [data-theme="dark"] .skills-olive svg path {
+            stroke: var(--olive-soft);
+        }
+        [data-theme="dark"] .skills-olive svg ellipse {
+            fill: var(--olive-soft);
+        }
+        [data-theme="dark"] .skills-olive svg circle {
+            fill: var(--olive-soft);
+        }
+
+        /* ============================================
+                   ABOUT
+                ============================================ */
+        .about {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-content .about-label {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .about-content h2 {
+            font-family: var(--font-english);
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.05;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+        }
+        .about-content h2 .highlight {
+            color: var(--olive);
+            font-style: italic;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-weight: 300;
+            margin-bottom: 16px;
+            max-width: 540px;
+        }
+
+        .about-content .signature {
+            font-family: var(--font-english);
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--olive);
+            font-style: italic;
+            margin-top: 16px;
+            letter-spacing: 1px;
+        }
+
+        .about-olive {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .about-olive svg {
+            max-width: 320px;
+            width: 100%;
+            opacity: 0.6;
+        }
+        [data-theme="dark"] .about-olive svg path {
+            stroke: var(--olive-soft);
+        }
+        [data-theme="dark"] .about-olive svg ellipse {
+            fill: var(--olive-soft);
+        }
+        [data-theme="dark"] .about-olive svg circle {
+            fill: var(--olive-soft);
+        }
+
+        /* ============================================
+                   QUOTE SECTION
+                ============================================ */
+        .quote-section {
+            padding: 100px 0;
+            background: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .quote-section .quote-bg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        .quote-section .quote-bg svg {
+            width: 60%;
+            max-width: 500px;
+            transform: rotate(-8deg);
+        }
+        [data-theme="dark"] .quote-section .quote-bg svg path {
+            stroke: var(--olive-soft);
+        }
+        [data-theme="dark"] .quote-section .quote-bg svg ellipse {
+            fill: var(--olive-soft);
+        }
+        [data-theme="dark"] .quote-section .quote-bg svg circle {
+            fill: var(--olive-soft);
+        }
+
+        .quote-section blockquote {
+            font-family: var(--font-english);
+            font-size: 3.2rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-primary);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+        .quote-section blockquote .highlight {
+            color: var(--olive);
+        }
+        .quote-section .quote-author {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            display: block;
+            font-style: normal;
+        }
+
+        /* ============================================
+                   CONTACT
+                ============================================ */
+        .contact {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-content .contact-label {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .contact-content h2 {
+            font-family: var(--font-english);
+            font-size: 3.4rem;
+            font-weight: 700;
+            line-height: 1.05;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        .contact-content h2 .highlight {
+            color: var(--olive);
+            font-style: italic;
+        }
+
+        .contact-content .contact-sub {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 32px;
+            max-width: 420px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 0;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+        .social-links a:hover {
+            background: var(--olive);
+            color: #fff;
+            border-color: var(--olive);
+            transform: translateY(-3px);
+        }
+
+        .contact-olive {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .contact-olive svg {
+            max-width: 280px;
+            width: 100%;
+            opacity: 0.5;
+        }
+        [data-theme="dark"] .contact-olive svg path {
+            stroke: var(--olive-soft);
+        }
+        [data-theme="dark"] .contact-olive svg ellipse {
+            fill: var(--olive-soft);
+        }
+        [data-theme="dark"] .contact-olive svg circle {
+            fill: var(--olive-soft);
+        }
+
+        /* ============================================
+                   FOOTER
+                ============================================ */
+        .footer {
+            padding: 48px 0 40px;
+            background: var(--olive-deep);
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        [data-theme="dark"] .footer {
+            background: #1A1814;
+        }
+
+        .footer .footer-olive {
+            position: absolute;
+            left: -40px;
+            bottom: -40px;
+            opacity: 0.04;
+            font-size: 12rem;
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer .footer-logo {
+            font-family: var(--font-english);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .footer .footer-logo .dot {
+            color: var(--gold-muted);
+        }
+
+        .footer .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+        .footer .footer-social a {
+            color: rgba(255, 255, 255, 0.25);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .footer .footer-social a:hover {
+            color: #fff;
+        }
+
+        .footer p {
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .footer .footer-divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* ============================================
+                   PROJECT DETAIL OVERLAY
+                ============================================ */
+        .detail-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .detail-overlay-bg {
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+        }
+
+        .detail-panel {
+            position: relative;
+            max-width: 820px;
+            width: 100%;
+            max-height: 90vh;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-medium);
+            padding: 40px 36px;
+            overflow-y: auto;
+            animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detail-close {
+            position: sticky;
+            top: 0;
+            float: left;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            z-index: 10;
+            margin-bottom: 16px;
+        }
+        .detail-close:hover {
+            background: var(--olive);
+            color: #fff;
+            border-color: var(--olive);
+        }
+
+        .detail-content {
+            padding-top: 4px;
+        }
+
+        .detail-content .detail-title {
+            font-family: var(--font-english);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .detail-content .detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+        }
+        .detail-content .detail-meta span i {
+            margin-left: 6px;
+            color: var(--olive-soft);
+        }
+
+        /* ── Gallery images: click to open in new tab ── */
+        .detail-content .detail-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .detail-content .detail-gallery img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .detail-content .detail-gallery img:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .detail-content .detail-desc-full {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .detail-content .detail-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .detail-content .detail-tech span {
+            padding: 4px 14px;
+            border: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+        }
+
+        .detail-content .detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* ============================================
+                   RESPONSIVE
+                ============================================ */
+        @media (max-width: 1200px) {
+            .hero-content h1 {
+                font-size: 3.6rem;
+            }
+            .quote-section blockquote {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-content .bio {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-visual {
+                order: -1;
+                min-height: 300px;
+            }
+            .olive-art {
+                max-width: 320px;
+            }
+
+            .skills-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .skills-olive {
+                display: none;
+            }
+
+            .about-wrapper {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .about-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .about-olive {
+                display: none;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .contact-content .contact-sub {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .contact-olive {
+                display: none;
+            }
+
+            /* Tablet: 2 columns */
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .project-card.featured {
+                grid-column: 1 / -1;
+            }
+            .project-card.featured .card-img {
+                aspect-ratio: 16/7;
+                overflow: hidden;
+            }
+
+            .quote-section blockquote {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: none !important;
+            }
+            .mobile-nav {
+                display: none !important;
+            }
+            .mobile-overlay {
+                display: none !important;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .hero-content .subtitle {
+                font-size: 1rem;
+            }
+            .hero-visual {
+                min-height: 200px;
+            }
+            .olive-art {
+                max-width: 220px;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .filter-tabs {
+                gap: 4px;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 8px;
+            }
+            .filter-tabs button {
+                padding: 8px 16px;
+                font-size: 0.7rem;
+                white-space: nowrap;
+            }
+
+            /* Mobile: 1 column */
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .project-card.featured {
+                grid-column: 1;
+            }
+            .project-card.featured .card-img {
+                aspect-ratio: 4/3;
+            }
+
+            .project-card .card-title {
+                font-size: 1.3rem;
+            }
+            .project-card .card-number {
+                font-size: 2.2rem;
+            }
+
+            .quote-section blockquote {
+                font-size: 1.8rem;
+            }
+
+            .about-content h2 {
+                font-size: 2.4rem;
+            }
+            .contact-content h2 {
+                font-size: 2.4rem;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+
+            .detail-panel {
+                padding: 24px 16px;
+            }
+            .detail-content .detail-title {
+                font-size: 1.8rem;
+            }
+            .detail-content .detail-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .hero-content .bio {
+                font-size: 0.9rem;
+            }
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .project-card .card-title {
+                font-size: 1.1rem;
+            }
+            .project-card .card-img {
+                aspect-ratio: 4/3;
+            }
+
+            .skill-item {
+                padding: 12px 12px;
+            }
+            .skill-item .skill-name {
+                font-size: 0.95rem;
+            }
+
+            .quote-section {
+                padding: 60px 0;
+            }
+            .quote-section blockquote {
+                font-size: 1.4rem;
+            }
+
+            .footer {
+                padding: 32px 0 24px;
+            }
+
+            .detail-content .detail-gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ============================================
+                   UTILITY
+                ============================================ */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-olive {
+            color: var(--olive);
+        }
+
+        /* ============================================
+                   TOAST
+                ============================================ */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--toast-bg);
+            color: var(--toast-text);
+            padding: 14px 28px;
+            border-radius: 0;
+            font-weight: 400;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-medium);
+            transform: translateY(80px);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 9999;
+            font-family: var(--font-sans);
+            letter-spacing: 0.3px;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ============================================
+                   CURSOR (Desktop only)
+                ============================================ */
+        @media (min-width: 1025px) {
+            .custom-cursor {
+                position: fixed;
+                pointer-events: none;
+                z-index: 9999;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(104, 115, 74, 0.06);
+                border: 1px solid rgba(104, 115, 74, 0.15);
+                transform: translate(-50%, -50%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--font-sans);
+                font-size: 0.5rem;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: var(--olive);
+                opacity: 0;
+                transition: opacity 0.4s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+            }
+            .custom-cursor.visible {
+                opacity: 1;
+            }
+            .custom-cursor.hover {
+                width: 64px;
+                height: 64px;
+                background: rgba(104, 115, 74, 0.08);
+                border-color: var(--olive);
+            }
+            .custom-cursor.hover .cursor-text {
+                opacity: 1;
+            }
+            .cursor-text {
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                font-weight: 600;
+            }
+        }
+
+        /* ============================================
+                   ACCESSIBILITY
+                ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal,
+            .reveal-left,
+            .reveal-right {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--olive);
+            outline-offset: 2px;
+        }
+
+        .page-indicator {
+            display: none;
+        }
+                /* ============================================
+           IMAGE PREVIEW OVERLAY - نافذة عرض الصور
+        ============================================ */
+        .image-preview-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        .image-preview-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .image-preview-container {
+            max-width: 92vw;
+            max-height: 88vh;
+            cursor: default;
+            animation: imageSlideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .image-preview-container img {
+            max-width: 100%;
+            max-height: 88vh;
+            object-fit: contain;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 24px 100px rgba(0, 0, 0, 0.6);
+            background: var(--bg-primary);
+        }
+        .image-preview-close {
+            position: fixed;
+            top: 28px;
+            right: 28px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: var(--transition);
+            cursor: pointer;
+            z-index: 10001;
+            border-radius: 0;
+        }
+        .image-preview-close:hover {
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        @keyframes imageSlideUp {
+            from {
+                opacity: 0;
+                transform: scale(0.92) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .image-preview-overlay {
+                padding: 20px 12px;
+            }
+            .image-preview-close {
+                top: 16px;
+                right: 16px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+    TOAST
+    ========================================== -->
+    <div id="toast" class="toast"></div>
+
+    <!-- ==========================================
+    MOBILE NAV (Hidden completely on mobile)
+    ========================================== -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-inner">
+            <div class="mobile-olive-bg">🫒</div>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+    MAIN NAVIGATION
+    ========================================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="logo">ELSAYD<span class="dot">.</span></a>
+
+            <div class="nav-controls">
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" id="desktopLangBtn">
+                        <i class="fas fa-globe"></i>
+                        <span id="desktopLangLabel">العربية</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="nav-dropdown-menu" id="desktopLangMenu">
+                        <button data-lang="ar" class="active">العربية</button>
+                        <button data-lang="en">English</button>
+                        <button data-lang="fr">Français</button>
+                    </div>
+                </div>
+
+                <button class="theme-toggle-icon" id="desktopThemeToggle" aria-label="Toggle theme">
+                    <span class="light-icon"><i class="fas fa-moon"></i></span>
+                    <span class="dark-icon"><i class="fas fa-sun"></i></span>
+                </button>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+    HERO
+    ========================================== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-label" data-i18n="hero.label">— Editorial Portfolio</span>
+                <h1>
+                    <span data-i18n="hero.line1">أصنع أفكارًا</span><br />
+                    <span data-i18n="hero.line2">تتحول إلى <span class="highlight">تجارب رقمية</span></span>
+                </h1>
+                <p class="subtitle" data-i18n="hero.subtitle">ELSAYD ELMAGRABY — مصمم ومطور تجارب رقمية</p>
+                <p class="bio" data-i18n="hero.bio">
+                    أحوّل الأفكار إلى تجارب رقمية أنيقة وفعّالة،
+                    مع اهتمام خاص بالتفاصيل وجودة الأداء.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#work" class="btn-primary"><span data-i18n="hero.cta_work">استكشف أعمالي</span> <i class="fas fa-arrow-left"></i></a>
+                    <a href="#contact" class="btn-secondary" data-i18n="hero.cta_contact">تواصل معي</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="olive-art">
+                    <svg viewBox="0 0 500 550" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M250 520 C250 480 240 440 230 400 C220 360 210 340 220 300 C230 260 260 240 280 250 C300 260 300 290 290 310 C280 330 260 340 250 330 C240 320 245 300 255 285" stroke="#465437" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                        <path d="M220 300 C190 280 160 270 140 240 C120 210 130 180 160 165 C190 150 220 160 235 185" stroke="#68734A" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"/>
+                        <path d="M280 250 C310 230 340 220 360 190 C380 160 370 130 340 120 C310 110 280 125 270 155" stroke="#68734A" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+                        <path d="M240 330 C220 360 200 380 180 370 C160 360 165 330 185 315" stroke="#68734A" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.4"/>
+                        <path d="M290 310 C320 340 350 360 370 340 C390 320 380 290 355 280" stroke="#68734A" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.4"/>
+                        <path d="M160 165 C145 150 135 130 145 115" stroke="#89956D" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+                        <path d="M340 120 C355 105 370 95 380 105" stroke="#89956D" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+                        <path d="M220 260 C200 250 185 240 175 225" stroke="#89956D" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+                        <path d="M270 230 C290 215 305 200 315 185" stroke="#89956D" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+                        <ellipse cx="155" cy="150" rx="22" ry="10" fill="#68734A" opacity="0.25" transform="rotate(-35 155 150)"/>
+                        <ellipse cx="140" cy="120" rx="18" ry="8" fill="#68734A" opacity="0.2" transform="rotate(-15 140 120)"/>
+                        <ellipse cx="175" cy="165" rx="20" ry="9" fill="#68734A" opacity="0.2" transform="rotate(20 175 165)"/>
+                        <ellipse cx="350" cy="115" rx="22" ry="10" fill="#68734A" opacity="0.25" transform="rotate(30 350 115)"/>
+                        <ellipse cx="375" cy="100" rx="18" ry="8" fill="#68734A" opacity="0.2" transform="rotate(50 375 100)"/>
+                        <ellipse cx="330" cy="130" rx="20" ry="9" fill="#68734A" opacity="0.2" transform="rotate(-10 330 130)"/>
+                        <ellipse cx="185" cy="240" rx="18" ry="8" fill="#68734A" opacity="0.15" transform="rotate(-25 185 240)"/>
+                        <ellipse cx="310" cy="200" rx="18" ry="8" fill="#68734A" opacity="0.15" transform="rotate(25 310 200)"/>
+                        <ellipse cx="250" cy="200" rx="24" ry="11" fill="#68734A" opacity="0.2" transform="rotate(-5 250 200)"/>
+                        <ellipse cx="230" cy="175" rx="20" ry="9" fill="#68734A" opacity="0.15" transform="rotate(15 230 175)"/>
+                        <ellipse cx="270" cy="175" rx="20" ry="9" fill="#68734A" opacity="0.15" transform="rotate(-15 270 175)"/>
+                        <ellipse cx="220" cy="350" rx="16" ry="7" fill="#68734A" opacity="0.12" transform="rotate(-20 220 350)"/>
+                        <ellipse cx="340" cy="340" rx="16" ry="7" fill="#68734A" opacity="0.12" transform="rotate(20 340 340)"/>
+                        <circle cx="150" cy="175" r="9" fill="#89956D" opacity="0.3"/>
+                        <circle cx="340" cy="145" r="9" fill="#89956D" opacity="0.3"/>
+                        <circle cx="195" cy="250" r="7" fill="#89956D" opacity="0.2"/>
+                        <circle cx="305" cy="215" r="7" fill="#89956D" opacity="0.2"/>
+                        <circle cx="250" cy="210" r="8" fill="#89956D" opacity="0.25"/>
+                        <circle cx="230" cy="360" r="6" fill="#89956D" opacity="0.15"/>
+                        <circle cx="350" cy="350" r="6" fill="#89956D" opacity="0.15"/>
+                        <path d="M140 240 C120 250 95 260 70 250" stroke="#89956D" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+                        <path d="M360 190 C385 195 410 200 430 190" stroke="#89956D" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+                        <path d="M220 400 C200 410 175 415 155 405" stroke="#89956D" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.2"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+            <div class="line">
+                <div class="line-inner"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    WORK / PROJECTS
+    ========================================== -->
+    <section class="work" id="work">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label" data-i18n="work.label">01 — SELECTED WORK</span>
+                <h2 data-i18n="work.title">أعمال مختارة</h2>
+                <p class="sub" data-i18n="work.sub">مجموعة من المشاريع التي تعكس رؤيتي وأسلوبي في التصميم والتطوير</p>
+            </div>
+
+            <div class="filter-tabs reveal" id="filterTabs">
+                <button class="active" data-filter="all" data-i18n="filter.all">الكل</button>
+                <button data-filter="web" data-i18n="filter.web">Web</button>
+                <button data-filter="apps" data-i18n="filter.apps">Apps</button>
+                <button data-filter="design" data-i18n="filter.design">Design</button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    PROJECT DETAIL OVERLAY
+    ========================================== -->
+    <div id="projectDetailOverlay" class="detail-overlay" style="display:none;">
+        <div class="detail-overlay-bg" id="detailOverlayBg"></div>
+        <div class="detail-panel" id="detailPanel">
+            <button class="detail-close" id="detailClose"><i class="fas fa-times"></i></button>
+            <div class="detail-content" id="detailContent">
+                <!-- injected by JS -->
+            </div>
+        </div>
+    </div>
+        <!-- ==========================================
+    IMAGE PREVIEW OVERLAY - نافذة عرض الصور العائمة
+    ========================================== -->
+    <div id="imagePreviewOverlay" class="image-preview-overlay">
+        <button class="image-preview-close" id="imagePreviewClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="image-preview-container" onclick="event.stopPropagation();">
+            <img id="imagePreviewImg" src="" alt="معرض الصور" />
+        </div>
+    </div>
+
+    <!-- ==========================================
+    SKILLS
+    ========================================== -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label" data-i18n="skills.label">02 — EXPERTISE</span>
+                <h2 data-i18n="skills.title">مهاراتي</h2>
+                <p class="sub" data-i18n="skills.sub">التقنيات والأدوات التي أعتمد عليها في مشاريعي</p>
+            </div>
+
+            <div class="skills-wrapper">
+                <div class="skills-list" id="skillsGrid">
+                    <!-- Injected by JS -->
+                </div>
+                <div class="skills-olive reveal-right">
+                    <svg viewBox="0 0 280 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M140 300 C135 270 120 250 110 220 C100 190 105 165 125 150 C145 135 165 145 175 165 C185 185 175 205 160 215 C145 225 135 215 130 200" stroke="#68734A" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.4"/>
+                        <path d="M125 150 C115 130 100 115 90 95" stroke="#68734A" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+                        <path d="M175 165 C190 145 205 130 220 120" stroke="#68734A" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+                        <ellipse cx="110" cy="135" rx="20" ry="9" fill="#68734A" opacity="0.15" transform="rotate(-30 110 135)"/>
+                        <ellipse cx="190" cy="145" rx="20" ry="9" fill="#68734A" opacity="0.15" transform="rotate(30 190 145)"/>
+                        <ellipse cx="145" cy="180" rx="18" ry="8" fill="#68734A" opacity="0.12" transform="rotate(-10 145 180)"/>
+                        <circle cx="115" cy="160" r="7" fill="#89956D" opacity="0.2"/>
+                        <circle cx="185" cy="170" r="7" fill="#89956D" opacity="0.2"/>
+                        <circle cx="145" cy="190" r="6" fill="#89956D" opacity="0.15"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    ABOUT
+    ========================================== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-content reveal-left">
+                    <span class="about-label" data-i18n="about.label">03 — ABOUT</span>
+                    <h2 data-i18n="about.title">من أنا؟<br /><span class="highlight">مصمم ومطور</span> شغوف</h2>
+                    <p data-i18n="about.p1">
+                      أنا Elsayd Elmaghraby، مصمم ومطور شغوف ببناء تجارب رقمية تجمع بين جمال التصميم وقوة التقنية. أحب تحويل الأفكار إلى مواقع ومشاريع عصرية، مع اهتمام دقيق بالتفاصيل، الأداء، وسهولة الاستخدام — لأنني أؤمن أن التصميم الجيد لا يكتفي بأن يبدو رائعًا، بل يجب أن يجعل كل تفاعل أكثر وضوحًا ومتعة.
+                    </p>
+                    <p data-i18n="about.p2">
+                        أؤمن بأن كل مشروع هو فرصة لخلق قيمة حقيقية من خلال الإبداع والتقنية.
+                        أعمل على مشاريع ويب، تطبيقات، تصميم واجهات، وأمن سيبراني.
+                    </p>
+                    <div class="signature">— Elsayd Elmaghraby</div>
+                </div>
+                <div class="about-olive reveal-right">
+                    <svg viewBox="0 0 320 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M160 320 C150 280 130 250 120 210 C110 170 120 140 150 125 C180 110 210 120 225 150 C240 180 225 210 205 225 C185 240 170 230 160 215" stroke="#68734A" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+                        <path d="M150 125 C140 105 125 85 115 65" stroke="#68734A" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+                        <path d="M225 150 C240 135 260 120 275 105" stroke="#68734A" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+                        <path d="M160 215 C170 230 190 245 200 260" stroke="#68734A" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+                        <path d="M120 210 C100 220 80 225 60 215" stroke="#68734A" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+                        <ellipse cx="130" cy="150" rx="24" ry="10" fill="#68734A" opacity="0.15" transform="rotate(-25 130 150)"/>
+                        <ellipse cx="210" cy="160" rx="24" ry="10" fill="#68734A" opacity="0.15" transform="rotate(25 210 160)"/>
+                        <ellipse cx="160" cy="190" rx="20" ry="9" fill="#68734A" opacity="0.1" transform="rotate(-5 160 190)"/>
+                        <circle cx="135" cy="175" r="8" fill="#89956D" opacity="0.2"/>
+                        <circle cx="215" cy="185" r="8" fill="#89956D" opacity="0.2"/>
+                        <circle cx="160" cy="205" r="7" fill="#89956D" opacity="0.15"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    QUOTE SECTION
+    ========================================== -->
+    <section class="quote-section" id="quote">
+        <div class="quote-bg">
+            <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M200 380 C190 340 170 310 160 270 C150 230 160 200 190 185 C220 170 250 180 265 210 C280 240 265 270 245 285 C225 300 210 290 200 275" stroke="#68734A" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <path d="M190 185 C180 165 165 145 155 125" stroke="#68734A" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                <path d="M265 210 C280 195 300 180 315 165" stroke="#68734A" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                <ellipse cx="170" cy="210" rx="22" ry="9" fill="#68734A" opacity="0.2" transform="rotate(-30 170 210)"/>
+                <ellipse cx="250" cy="220" rx="22" ry="9" fill="#68734A" opacity="0.2" transform="rotate(30 250 220)"/>
+                <circle cx="175" cy="235" r="8" fill="#89956D" opacity="0.25"/>
+                <circle cx="250" cy="245" r="8" fill="#89956D" opacity="0.25"/>
+            </svg>
+        </div>
+        <div class="container">
+            <blockquote class="reveal">
+                <span data-i18n="quote.text">"التصميم الجيد لا يلفت الانتباه فقط،<br />بل <span class="highlight">يترك أثرًا</span>."</span>
+                <span class="quote-author">— Elsayd Elmaghraby</span>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    CONTACT
+    ========================================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-content reveal-left">
+                    <span class="contact-label" data-i18n="contact.label">04 — CONTACT</span>
+                    <h2 data-i18n="contact.title">لنصنع شيئًا<br /><span class="highlight">يستحق أن يُرى</span></h2>
+                    <p class="contact-sub" data-i18n="contact.sub">
+                        هل لديك فكرة مشروع؟ أو ترغب في التعاون؟ يسعدني دائمًا التواصل معك.
+                    </p>
+
+                    <a href="mailto:elsaydaymanelmagraby35@outlook.com" class="btn-primary" style="margin-bottom: 28px;">
+                        <span data-i18n="contact.cta">ابدأ مشروعًا معي</span> <i class="fas fa-arrow-left"></i>
+                    </a>
+
+                  <div class="social-links">
+<div class="social-links">
+    <a href="https://github.com/elsaydelmagraby3-ops" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/elsayd-elmaghraby-35206a41b?utm_source=share_via&utm_content=profile&utm_medium=member_android" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://x.com/Elsayd_Ayman1" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="https://www.instagram.com/elsayd_elmaghraby/#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.youtube.com/@elsayd-elmagraby" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://www.facebook.com/profile.php?id=61575958225637" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.tiktok.com/@.elsayd_ayman_elmaghraby?_r=1&_t=ZS-990wJLUwi96" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    <a href="https://wa.me/+201220687643" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.threads.com/@elsayd_elmaghraby?xmt=AQG0cH88MmMLOE62PR2tvUAhAYyKbeQQiNRrGxdfCXI4KwI" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
+    <a href="mailto:elsaydaymanelmagraby35@outlook.com" aria-label="Email">
+        <i class="fa-solid fa-envelope"></i>
+    </a>
+</div>
+</div>
+                </div>
+
+                <div class="contact-olive reveal-right">
+                    <svg viewBox="0 0 280 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M140 300 C135 270 120 250 110 220 C100 190 105 165 125 150 C145 135 165 145 175 165 C185 185 175 205 160 215 C145 225 135 215 130 200" stroke="#68734A" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.4"/>
+                        <path d="M125 150 C115 130 100 115 90 95" stroke="#68734A" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+                        <path d="M175 165 C190 145 205 130 220 120" stroke="#68734A" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+                        <ellipse cx="110" cy="135" rx="20" ry="9" fill="#68734A" opacity="0.15" transform="rotate(-30 110 135)"/>
+                        <ellipse cx="190" cy="145" rx="20" ry="9" fill="#68734A" opacity="0.15" transform="rotate(30 190 145)"/>
+                        <circle cx="115" cy="160" r="7" fill="#89956D" opacity="0.2"/>
+                        <circle cx="185" cy="170" r="7" fill="#89956D" opacity="0.2"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    FOOTER
+    ========================================== -->
+    <footer class="footer">
+        <div class="footer-olive">🫒</div>
+        <div class="container">
+            <div class="footer-logo">ELSAYD<span class="dot">.</span>ELMAGRABY</div>
+            <div class="footer-divider"></div>
+            <div class="footer-social">
+                <a href="https://github.com/elsaydelmagraby3-ops" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/elsayd-elmaghraby-35206a41b?utm_source=share_via&utm_content=profile&utm_medium=member_android" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://x.com/Elsayd_Ayman1" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="https://www.instagram.com/elsayd_elmaghraby/#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.youtube.com/@elsayd-elmagraby" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://www.facebook.com/profile.php?id=61575958225637" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.tiktok.com/@.elsayd_ayman_elmaghraby?_r=1&_t=ZS-990wJLUwi96" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    <a href="https://wa.me/+201220687643" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.threads.com/@elsayd_elmaghraby?xmt=AQG0cH88MmMLOE62PR2tvUAhAYyKbeQQiNRrGxdfCXI4KwI" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
+    <a href="mailto:elsaydaymanelmagraby35@outlook.com" aria-label="Email">
+        <i class="fa-solid fa-envelope"></i>
+    </a>
+            </div>
+            <p data-i18n="footer.copyright">© 2026 Elsayd Elmaghraby — صنع بإبداع وشغف</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+    JAVASCRIPT
+    ========================================== -->
+    <script>
+        // ==========================================
+        // DATA
+        // ==========================================
+        const projectsData = [
+            {
+            id: 1,
+            titleKey: 'project.climate',
+            descKey: 'project.climate.desc',
+            fullDescKey: 'project.climate.full',
+            category: 'web',
+            tech: ['HTML', 'CSS', 'JavaScript', 'Firebase'],
+            image: 'png-clipart-european-union-climate-change-natural-environment-european-external-action-service-natural-environment-leaf-logo.png',
+            images: [
+                'Capture.PNG',
+                'Capture1.PNG',
+                'Capture2.PNG',
+            ],
+            liveUrl: 'التغيرات المناخية/Elsayd.html',
+            githubUrl: 'التغيرات المناخية/Elsayd.html',
+            published: true,
+            date: '2026-08-15'
+        }, {
+            id: 2,
+            titleKey: 'project.tourism',
+            descKey: 'project.tourism.desc',
+            fullDescKey: 'project.tourism.full',
+            category: 'apps',
+            tech: ['Flutter', 'Firebase', 'AI'],
+            image: 'owl.png',
+            images: [
+                'capture3.PNG',
+                'capture4.PNG',
+                'capture5.PNG'
+            ],
+            liveUrl: 'Egypt/index.html',
+            githubUrl: 'Egypt/index.html',
+            published: true,
+            date: '2026-08-10'
+        }, {
+            id: 3,
+            titleKey: 'project.design',
+            descKey: 'project.design.desc',
+            fullDescKey: 'project.design.full',
+            category: 'design',
+            tech: ['Canva', 'Illustrator', 'Photoshop'],
+            image: '2.png',
+            images: [
+                'nesma (2).png',
+                '1.png',
+                '3.png',
+                '629889640_122162800940865274_2632277899517925610_n.jpg',
+                '2.png'
+            ],
+
+            published: true,
+            date: '2026-08-05'
+        }];
+
+        const skillsData = [
+            { name: 'HTML', icon: 'fab fa-html5' },
+            { name: 'CSS', icon: 'fab fa-css3-alt' },
+            { name: 'JavaScript', icon: 'fab fa-js' },
+            { name: 'Firebase', icon: 'fas fa-fire' },
+            { name: 'Cloudinary', icon: 'fas fa-cloud' },
+            { name: 'UI/UX', icon: 'fas fa-pencil-ruler' },
+            { name: 'Cybersecurity', icon: 'fas fa-shield-alt' },
+            { name: 'Git & GitHub', icon: 'fab fa-git-alt' },
+        ];
+
+        // ==========================================
+        // TRANSLATIONS
+        // ==========================================
+        const translations = {
+            ar: {
+                'nav.work': 'أعمالي',
+                'nav.skills': 'مهاراتي',
+                'nav.about': 'من أنا',
+                'nav.contact': 'تواصل',
+                'nav.dashboard': 'لوحة التحكم',
+                'hero.label': '— Editorial Portfolio',
+                'hero.line1': 'أصنع أفكارًا',
+                'hero.line2': 'تتحول إلى <span class="highlight">تجارب رقمية</span>',
+                'hero.subtitle': 'ELSAYD ELMAGRABY — مصمم ومطور تجارب رقمية',
+                'hero.bio': 'أحوّل الأفكار إلى تجارب رقمية أنيقة وفعّالة، مع اهتمام خاص بالتفاصيل وجودة الأداء.',
+                'hero.cta_work': 'استكشف أعمالي',
+                'hero.cta_contact': 'تواصل معي',
+                'work.label': '01 — SELECTED WORK',
+                'work.title': 'أعمال مختارة',
+                'work.sub': 'مجموعة من المشاريع التي تعكس رؤيتي وأسلوبي في التصميم والتطوير',
+                'filter.all': 'الكل',
+                'filter.web': 'Web',
+                'filter.apps': 'Apps',
+                'filter.design': 'Design',
+                'filter.cybersecurity': 'أمن سيبراني',
+                'filter.ai': 'ذكاء اصطناعي',
+                'skills.label': '02 — EXPERTISE',
+                'skills.title': 'مهاراتي',
+                'skills.sub': 'التقنيات والأدوات التي أعتمد عليها في مشاريعي',
+                'about.label': '03 — ABOUT',
+                'about.title': 'من أنا؟<br /><span class="highlight">مصمم ومطور</span> شغوف',
+                'about.p1': 'أنا السيد ايمن المغربي، مصمم ومطور شغوف ببناء تجارب رقمية تجمع بين جمال التصميم وقوة التقنية. أحب تحويل الأفكار إلى مواقع ومشاريع عصرية، مع اهتمام دقيق بالتفاصيل، الأداء، وسهولة الاستخدام',
+                'about.p2': ' لأنني أؤمن أن التصميم الجيد لا يكتفي بأن يبدو رائعًا، بل يجب أن يجعل كل تفاعل أكثر وضوحًا ومتعة.',
+                'quote.text': '"التصميم الجيد لا يلفت الانتباه فقط،<br />بل <span class="highlight">يترك أثرًا</span>."',
+                'contact.label': '04 — CONTACT',
+                'contact.title': 'لنصنع شيئًا<br /><span class="highlight">يستحق أن يُرى</span>',
+                'contact.sub': 'هل لديك فكرة مشروع؟ أو ترغب في التعاون؟ يسعدني دائمًا التواصل معك.',
+                'contact.cta': 'ابدأ مشروعًا معي',
+                'footer.copyright': '© 2026 Elsayd Elmaghraby — صنع بإبداع وشغف',
+                'project.climate': 'تغير المناخ',
+                'project.climate.desc': 'منصة توعوية تفاعلية تعرض تأثيرات التغير المناخي والحلول المقترحة.',
+                'project.climate.full': 'مشروع يهدف إلى نشر الوعي حول التغير المناخي باستخدام رسوم بيانية تفاعلية ومحتوى مرئي جذاب، مع تقديم حلول عملية يمكن للأفراد والمجتمعات تنفيذها.',
+                'project.tourism': 'السياحة',
+                'project.tourism.desc': 'دليل سياحي ذكي يقدم تجارب مخصصة للمسافرين بناءً على اهتماماتهم.',
+                'project.tourism.full': 'تطبيق سياحي يستخدم الذكاء الاصطناعي لتقديم توصيات مخصصة لكل مسافر، يشمل أماكن الإقامة، المطاعم، الأنشطة، والجولات السياحية بناءً على تفضيلات المستخدم.',
+                'project.design': 'جرافيك ديزين',
+                'project.design.desc': 'مجموعة من التصاميم الإبداعية التي تم تنفيذها باستخدام Canva لمشاريع متنوعة.',
+                'project.design.full': 'مجموعة من التصاميم الجرافيكية المنفذة عبر Canva، تشمل تصاميم هوية بصرية، منشورات وسائل تواصل اجتماعي، أغلفة، ومواد تسويقية متنوعة تعكس رؤية إبداعية متكاملة.',
+                'detail.title': 'تفاصيل المشروع',
+                'detail.date': 'تاريخ النشر',
+                'detail.category': 'التصنيف',
+                'detail.link': 'الرابط',
+                'detail.tech': 'التقنيات المستخدمة',
+                'detail.view': 'عرض المشروع',
+                'detail.close': 'إغلاق',
+                'detail.gallery': 'معرض الصور',
+                'toast.welcome': 'مرحبًا بك في موقعي الشخصي — Elsayd Elmaghraby'
+            },
+            en: {
+                'nav.work': 'My Work',
+                'nav.skills': 'Skills',
+                'nav.about': 'About',
+                'nav.contact': 'Contact',
+                'nav.dashboard': 'Dashboard',
+                'hero.label': '— Editorial Portfolio',
+                'hero.line1': 'I create ideas',
+                'hero.line2': 'that turn into <span class="highlight">digital experiences</span>',
+                'hero.subtitle': 'ELSAYD ELMAGRABY — Digital Experience Designer & Developer',
+                'hero.bio': 'I transform ideas into elegant and effective digital experiences, with a focus on detail and performance.',
+                'hero.cta_work': 'Explore My Work',
+                'hero.cta_contact': 'Contact Me',
+                'work.label': '01 — SELECTED WORK',
+                'work.title': 'Selected Work',
+                'work.sub': 'A collection of projects that reflect my vision and style in design and development',
+                'filter.all': 'All',
+                'filter.web': 'Web',
+                'filter.apps': 'Apps',
+                'filter.design': 'Design',
+                'filter.cybersecurity': 'Cybersecurity',
+                'filter.ai': 'AI',
+                'skills.label': '02 — EXPERTISE',
+                'skills.title': 'My Skills',
+                'skills.sub': 'Technologies and tools I rely on in my projects',
+                'about.label': '03 — ABOUT',
+                'about.title': 'Who am I?<br /><span class="highlight">Designer & Developer</span> with passion',
+                'about.p1': 'I am Elsayd Ayman Elmaghraby, a designer and developer passionate about building digital experiences that combine aesthetic appeal with technical power. I love transforming ideas into modern websites and projects, with meticulous attention to detail, performance, and usability.',
+                'about.p2': 'Because I believe that good design doesn\'t just look great—it must make every interaction clearer and more enjoyable.',
+                'quote.text': '"Good design doesn\'t just catch attention,<br />it leaves <span class="highlight">an impact</span>."',
+                'contact.label': '04 — CONTACT',
+                'contact.title': 'Let\'s create something<br /><span class="highlight">worth seeing</span>',
+                'contact.sub': 'Have a project idea? Or want to collaborate? I\'m always happy to hear from you.',
+                'contact.cta': 'Start a project with me',
+                'footer.copyright': '© 2026 Elsayd Elmaghraby — Made with creativity and passion',
+                'project.climate': 'Climate Change',
+                'project.climate.desc': 'An interactive awareness platform showcasing climate change impacts and proposed solutions.',
+                'project.climate.full': 'A project aimed at raising awareness about climate change using interactive charts and engaging visual content, with practical solutions that individuals and communities can implement.',
+                'project.tourism': 'Tourism',
+                'project.tourism.desc': 'A smart travel guide that offers personalized experiences for travelers based on their interests.',
+                'project.tourism.full': 'A tourism app that uses AI to provide personalized recommendations for each traveler, including accommodation, restaurants, activities, and tours based on user preferences.',
+                'project.design': 'Graphic Design',
+                'project.design.desc': 'A collection of creative designs executed using Canva for various projects.',
+                'project.design.full': 'A collection of graphic designs created with Canva, including brand identity, social media posts, covers, and various marketing materials reflecting an integrated creative vision.',
+                'detail.title': 'Project Details',
+                'detail.date': 'Published Date',
+                'detail.category': 'Category',
+                'detail.link': 'Link',
+                'detail.tech': 'Technologies Used',
+                'detail.view': 'View Project',
+                'detail.close': 'Close',
+                'detail.gallery': 'Image Gallery',
+                'toast.welcome': 'Welcome to my personal site — Elsayd Elmaghraby'
+            },
+            fr: {
+                'nav.work': 'Mes projets',
+                'nav.skills': 'Compétences',
+                'nav.about': 'À propos',
+                'nav.contact': 'Contact',
+                'nav.dashboard': 'Tableau de bord',
+                'hero.label': '— Portfolio Éditorial',
+                'hero.line1': 'Je crée des idées',
+                'hero.line2': 'qui se transforment en <span class="highlight">expériences numériques</span>',
+                'hero.subtitle': 'ELSAYD ELMAGRABY — Designer & Développeur d\'expériences numériques',
+                'hero.bio': 'Je transforme les idées en expériences numériques élégantes et efficaces, avec une attention particulière aux détails et à la performance.',
+                'hero.cta_work': 'Découvrir mes projets',
+                'hero.cta_contact': 'Me contacter',
+                'work.label': '01 — PROJETS SÉLECTIONNÉS',
+                'work.title': 'Projets sélectionnés',
+                'work.sub': 'Une collection de projets qui reflètent ma vision et mon style en conception et développement',
+                'filter.all': 'Tous',
+                'filter.web': 'Web',
+                'filter.apps': 'Apps',
+                'filter.design': 'Design',
+                'filter.cybersecurity': 'Cybersécurité',
+                'filter.ai': 'IA',
+                'skills.label': '02 — EXPERTISE',
+                'skills.title': 'Mes compétences',
+                'skills.sub': 'Technologies et outils que j\'utilise dans mes projets',
+                'about.label': '03 — À PROPOS',
+                'about.title': 'Qui suis-je ?<br /><span class="highlight">Designer & Développeur</span> passionné',
+                'about.p1': 'Je suis Elsayd Ayman Elmaghraby, designer et développeur passionné par la création d\'expériences numériques alliant esthétique et puissance technique. J\'aime transformer des idées en sites web et en projets modernes, en accordant une attention méticuleuse aux détails, à la performance et à l\'ergonomie.',
+                'about.p2': 'Car je crois qu\'un bon design ne se contente pas d\'être esthétique : il doit rendre chaque interaction plus claire et plus agréable.',
+                'quote.text': '"Un bon design ne se contente pas d\'attirer l\'attention,<br />il laisse <span class="highlight">une empreinte</span>."',
+                'contact.label': '04 — CONTACT',
+                'contact.title': 'Créons quelque chose<br /><span class="highlight">qui mérite d\'être vu</span>',
+                'contact.sub': 'Vous avez une idée de projet ? Ou vous souhaitez collaborer ? Je suis toujours ravi de vous entendre.',
+                'contact.cta': 'Commencer un projet avec moi',
+                'footer.copyright': '© 2026 Elsayd Elmaghraby — Fabriqué avec créativité et passion',
+                'project.climate': 'Changement climatique',
+                'project.climate.desc': 'Une plateforme de sensibilisation interactive présentant les impacts du changement climatique et les solutions proposées.',
+                'project.climate.full': 'Un projet visant à sensibiliser au changement climatique à l\'aide de graphiques interactifs et de contenu visuel engageant, avec des solutions pratiques que les individus et les communautés peuvent mettre en œuvre.',
+                'project.tourism': 'Tourisme',
+                'project.tourism.desc': 'Un guide de voyage intelligent offrant des expériences personnalisées aux voyageurs en fonction de leurs intérêts.',
+                'project.tourism.full': 'Une application touristique qui utilise l\'IA pour fournir des recommandations personnalisées à chaque voyageur, y compris l\'hébergement, les restaurants, les activités et les visites en fonction des préférences de l\'utilisateur.',
+                'project.design': 'Design graphique',
+                'project.design.desc': 'Une collection de créations réalisées avec Canva pour divers projets.',
+                'project.design.full': 'Une collection de créations graphiques réalisées avec Canva, incluant l\'identité de marque, les publications sur les réseaux sociaux, les couvertures et divers supports marketing reflétant une vision créative intégrée.',
+                'detail.title': 'Détails du projet',
+                'detail.date': 'Date de publication',
+                'detail.category': 'Catégorie',
+                'detail.link': 'Lien',
+                'detail.tech': 'Technologies utilisées',
+                'detail.view': 'Voir le projet',
+                'detail.close': 'Fermer',
+                'detail.gallery': 'Galerie d\'images',
+                'toast.welcome': 'Bienvenue sur mon site personnel — Elsayd Elmaghraby'
+            }
+        };
+
+        // ==========================================
+        // I18N SYSTEM
+        // ==========================================
+        let currentLang = 'ar';
+
+        function getTranslations() {
+            return translations[currentLang] || translations.ar;
+        }
+
+        function translateElement(el) {
+            const key = el.getAttribute('data-i18n');
+            if (!key) return;
+            const t = getTranslations();
+            const value = t[key];
+            if (value) {
+                if (key === 'hero.line2' || key === 'about.title' || key === 'quote.text' || key === 'contact.title') {
+                    el.innerHTML = value;
+                } else {
+                    el.textContent = value;
+                }
+            }
+        }
+
+        function applyTranslations() {
+            document.querySelectorAll('[data-i18n]').forEach(translateElement);
+
+            const langNames = { ar: 'العربية', en: 'English', fr: 'Français' };
+            const labels = document.querySelectorAll('#desktopLangLabel');
+            labels.forEach(el => {
+                if (el) el.textContent = langNames[currentLang] || 'العربية';
+            });
+
+            document.querySelectorAll('.nav-dropdown-menu button[data-lang]').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === currentLang);
+            });
+
+            // Re-render projects with new language
+            const activeFilter = document.querySelector('.filter-tabs .active');
+            const filter = activeFilter ? activeFilter.dataset.filter : 'all';
+            renderProjects(filter);
+        }
+
+        function setLanguage(lang) {
+            if (lang === currentLang) return;
+            currentLang = lang;
+            document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            applyTranslations();
+            localStorage.setItem('preferredLang', lang);
+            showToast(lang === 'ar' ? 'تم تغيير اللغة' : lang === 'fr' ? 'Langue modifiée' : 'Language changed');
+        }
+
+        // ==========================================
+        // THEME SYSTEM
+        // ==========================================
+        function getPreferredTheme() {
+            return localStorage.getItem('preferredTheme') || 'light';
+        }
+
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+            localStorage.setItem('preferredTheme', theme);
+            updateThemeIcons(theme);
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
+
+        function updateThemeIcons(theme) {
+            const isDark = theme === 'dark';
+            document.querySelectorAll('.theme-toggle-icon .light-icon').forEach(el => {
+                el.style.display = isDark ? 'none' : 'inline';
+            });
+            document.querySelectorAll('.theme-toggle-icon .dark-icon').forEach(el => {
+                el.style.display = isDark ? 'inline' : 'none';
+            });
+        }
+
+        // ==========================================
+        // RENDER PROJECTS
+        // ==========================================
+        function renderProjects(filter = 'all') {
+            const grid = document.getElementById('projectsGrid');
+            const t = getTranslations();
+
+            const filtered = filter === 'all' ?
+                projectsData :
+                projectsData.filter(p => p.category === filter);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                            <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-secondary);font-weight:300;">
+                                <i class="fas fa-search" style="font-size:2rem;display:block;margin-bottom:12px;opacity:0.2;"></i>
+                                ${currentLang === 'ar' ? 'لا توجد مشاريع في هذا التصنيف' : currentLang === 'fr' ? 'Aucun projet dans cette catégorie' : 'No projects in this category'}
+                            </div>
+                        `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map((p, index) => {
+                const title = t[p.titleKey] || p.titleKey;
+                const desc = t[p.descKey] || p.descKey;
+                const categoryLabel = t[`filter.${p.category}`] || p.category;
+
+                return `
+<div class="project-card" data-category="${p.category}" onclick="openProjectDetail(${p.id})">
+                <div class="card-number">${String(index + 1).padStart(2, '0')}</div>
+                                <div class="card-img">
+                                    ${p.image ? `<img src="${p.image}" alt="${title}" loading="lazy" />` :
+                                    `<span class="placeholder-icon"><i class="fas fa-code"></i></span>`}
+                                </div>
+                                <div class="card-meta">
+                                    <span class="category">${categoryLabel}</span>
+                                    ${p.published ? '' : '<span class="dot-sep">•</span><span class="category" style="color:var(--gold-muted);">' + (currentLang === 'ar' ? 'مسودة' : currentLang === 'fr' ? 'Brouillon' : 'Draft') + '</span>'}
+                                </div>
+                                <h4 class="card-title">${title}</h4>
+                                <p class="card-desc">${desc}</p>
+                                <div class="card-tech">
+                                    ${p.tech.map(tag => `<span>${tag}</span>`).join('')}
+                                </div>
+                                <div class="card-actions" onclick="event.stopPropagation();">
+                                    <button onclick="openProjectDetail(${p.id})" class="btn-sm btn-sm-primary">
+                                        <i class="fas fa-expand"></i> ${currentLang === 'ar' ? 'تفاصيل' : currentLang === 'fr' ? 'Détails' : 'Details'}
+                                    </button>
+                                    <a href="${p.liveUrl}" target="_blank" class="btn-sm"><i class="fas fa-eye"></i> ${currentLang === 'ar' ? 'عرض' : currentLang === 'fr' ? 'Voir' : 'View'}</a>
+                                    ${p.githubUrl && p.githubUrl !== '#' ? `<a href="${p.githubUrl}" target="_blank" class="btn-sm"><i class="fab fa-github"></i> GitHub</a>` : ''}
+                                </div>
+                                <svg class="olive-leaf-hover" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                    <ellipse cx="20" cy="20" rx="14" ry="6" fill="#68734A" opacity="0.3" transform="rotate(-20 20 20)"/>
+                                </svg>
+                            </div>
+                        `;
+            }).join('');
+        }
+
+        // ==========================================
+        // RENDER SKILLS
+        // ==========================================
+        function renderSkills() {
+            const grid = document.getElementById('skillsGrid');
+            grid.innerHTML = skillsData.map((s, i) => `
+                        <div class="skill-item">
+                            <div class="skill-left">
+                                <span class="skill-num">${String(i + 1).padStart(2, '0')}</span>
+                                <span class="skill-name">${s.name}</span>
+                            </div>
+                            <span class="skill-line"></span>
+                            <i class="${s.icon} skill-icon"></i>
+                            <span class="skill-tag">expert</span>
+                        </div>
+                    `).join('');
+        }
+
+        // ==========================================
+        // PROJECT DETAIL (Hash-based)
+        // ==========================================
+         // ==========================================
+        // PROJECT DETAIL (Hash-based)
+        // ==========================================
+        function openProjectDetail(projectId) {
+            const project = projectsData.find(p => p.id === projectId);
+            if (!project) return;
+
+            const t = getTranslations();
+            const overlay = document.getElementById('projectDetailOverlay');
+            const content = document.getElementById('detailContent');
+
+            const title = t[project.titleKey] || project.titleKey;
+            const fullDesc = t[project.fullDescKey] || project.fullDescKey || project.descKey;
+            const categoryLabel = t[`filter.${project.category}`] || project.category;
+
+            // إنشاء معرض الصور مع إضافة onclick لفتح الصورة في نافذة عائمة
+            let imagesHtml = '';
+            if (project.images && project.images.length > 0) {
+                imagesHtml = project.images.map(img => 
+                    `<img src="${img}" alt="${title}" loading="lazy" onclick="event.stopPropagation(); openImagePreview('${img}');" style="cursor:pointer;" />`
+                ).join('');
+            } else if (project.image) {
+                imagesHtml = `<img src="${project.image}" alt="${title}" loading="lazy" onclick="event.stopPropagation(); openImagePreview('${project.image}');" style="cursor:pointer;" />`;
+            }
+
+            const dateLabel = t['detail.date'] || 'تاريخ النشر';
+            const categoryLabelText = t['detail.category'] || 'التصنيف';
+            const linkLabel = t['detail.link'] || 'الرابط';
+            const techLabel = t['detail.tech'] || 'التقنيات المستخدمة';
+            const viewLabel = t['detail.view'] || 'عرض المشروع';
+
+            content.innerHTML = `
+                        <h2 class="detail-title">${title}</h2>
+                        <div class="detail-meta">
+                            <span><i class="far fa-calendar-alt"></i> ${dateLabel}: ${project.date || 'غير محدد'}</span>
+                            <span><i class="fas fa-tag"></i> ${categoryLabelText}: ${categoryLabel}</span>
+                            ${project.liveUrl && project.liveUrl !== '#' ? `<span><i class="fas fa-link"></i> ${linkLabel}: <a href="${project.liveUrl}" target="_blank">${project.liveUrl}</a></span>` : ''}
+                        </div>
+                        ${imagesHtml ? `<div class="detail-gallery">${imagesHtml}</div>` : ''}
+                        <p class="detail-desc-full">${fullDesc}</p>
+                        <div class="detail-tech">
+                            <span style="font-weight:600;border:none;padding:0 10px 0 0;">${techLabel}:</span>
+                            ${project.tech.map(tag => `<span>${tag}</span>`).join('')}
+                        </div>
+                        <div class="detail-actions">
+                            <a href="${project.liveUrl}" target="_blank" class="btn-primary" style="padding:12px 28px;font-size:0.9rem;"><span>${viewLabel}</span> <i class="fas fa-arrow-left"></i></a>
+                            ${project.githubUrl && project.githubUrl !== '#' ? `<a href="${project.githubUrl}" target="_blank" class="btn-secondary" style="padding:12px 28px;font-size:0.9rem;"><i class="fab fa-github"></i> GitHub</a>` : ''}
+                        </div>
+                    `;
+
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            window.location.hash = `project-${project.id}`;
+        }
+        function closeProjectDetail() {
+            document.getElementById('projectDetailOverlay').style.display = 'none';
+            document.body.style.overflow = '';
+            if (window.location.hash.startsWith('#project-')) {
+                history.pushState('', document.title, window.location.pathname + window.location.search);
+            }
+        }
+
+        function handleHashChange() {
+            const hash = window.location.hash;
+            if (hash.startsWith('#project-')) {
+                const id = parseInt(hash.replace('#project-', ''));
+                const project = projectsData.find(p => p.id === id);
+                if (project) {
+                    openProjectDetail(id);
+                }
+            } else {
+                closeProjectDetail();
+            }
+        }
+
+        // ==========================================
+        // FILTER TABS
+        // ==========================================
+        function setupFilters() {
+            const tabs = document.querySelectorAll('.filter-tabs button');
+            tabs.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabs.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    renderProjects(this.dataset.filter);
+                });
+            });
+        }
+
+        // ==========================================
+        // SCROLL REVEAL
+        // ==========================================
+        function setupReveal() {
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        // ==========================================
+        // NAVBAR SCROLL
+        // ==========================================
+        function setupNavbar() {
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 60) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // ==========================================
+        // TOAST
+        // ==========================================
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ==========================================
+        // DROPDOWN TOGGLE
+        // ==========================================
+        function setupDropdowns() {
+            const desktopBtn = document.getElementById('desktopLangBtn');
+            const desktopMenu = document.getElementById('desktopLangMenu');
+
+            if (desktopBtn && desktopMenu) {
+                desktopBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    desktopMenu.classList.toggle('open');
+                });
+
+                desktopMenu.querySelectorAll('button[data-lang]').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        setLanguage(btn.dataset.lang);
+                        desktopMenu.classList.remove('open');
+                    });
+                });
+
+                document.addEventListener('click', () => {
+                    desktopMenu.classList.remove('open');
+                });
+            }
+        }
+
+        // ==========================================
+        // CUSTOM CURSOR
+        // ==========================================
+        function setupCustomCursor() {
+            if (window.innerWidth < 1025) return;
+
+            const cursor = document.createElement('div');
+            cursor.className = 'custom-cursor';
+            cursor.innerHTML = '<span class="cursor-text">VIEW</span>';
+            document.body.appendChild(cursor);
+
+            let isVisible = false;
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                if (!isVisible) {
+                    cursor.classList.add('visible');
+                    isVisible = true;
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                cursor.classList.remove('visible');
+                isVisible = false;
+            });
+
+            document.querySelectorAll('.project-card, .btn-primary, .btn-secondary, .social-links a').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        }
+
+        // ==========================================
+        // PARALLAX
+        // ==========================================
+        function setupParallax() {
+            const heroVisual = document.querySelector('.hero-visual');
+            if (!heroVisual) return;
+
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                const offset = scrolled * 0.03;
+                heroVisual.style.transform = `translateY(${offset}px)`;
+            }, { passive: true });
+        }
+
+        // ==========================================
+        // INIT
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && translations[savedLang]) {
+                currentLang = savedLang;
+            }
+
+            const savedTheme = getPreferredTheme();
+            setTheme(savedTheme);
+
+            renderSkills();
+            renderProjects('all');
+            setupFilters();
+            setupReveal();
+            setupNavbar();
+            setupCustomCursor();
+            setupParallax();
+            setupDropdowns();
+
+            applyTranslations();
+            // ===== أحداث إغلاق نافذة عرض الصور =====
+            const imgOverlay = document.getElementById('imagePreviewOverlay');
+            const imgClose = document.getElementById('imagePreviewClose');
+            
+            if (imgOverlay) {
+                imgOverlay.addEventListener('click', function(e) {
+                    if (e.target === this) closeImagePreview();
+                });
+            }
+            if (imgClose) {
+                imgClose.addEventListener('click', closeImagePreview);
+            }
+
+            // إغلاق نافذة الصور بالضغط على ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const imgOverlay = document.getElementById('imagePreviewOverlay');
+                    if (imgOverlay && imgOverlay.classList.contains('active')) {
+                        closeImagePreview();
+                    }
+                }
+            });
+            document.querySelectorAll('.theme-toggle-icon').forEach(btn => {
+                btn.addEventListener('click', toggleTheme);
+            });
+
+            // Detail overlay events
+            document.getElementById('detailOverlayBg').addEventListener('click', closeProjectDetail);
+            document.getElementById('detailClose').addEventListener('click', closeProjectDetail);
+
+            window.addEventListener('hashchange', handleHashChange);
+
+            if (window.location.hash.startsWith('#project-')) {
+                handleHashChange();
+            }
+
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const target = document.querySelector(window.location.hash);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            }
+
+            const t = getTranslations();
+            const welcomeMsg = t['toast.welcome'] || 'مرحبًا بك في موقعي الشخصي — Elsayd Elmaghraby';
+            setTimeout(() => showToast(welcomeMsg), 800);
+        });
+                // ==========================================
+        // IMAGE PREVIEW - فتح الصور في نافذة عائمة
+        // ==========================================
+        function openImagePreview(src) {
+            const overlay = document.getElementById('imagePreviewOverlay');
+            const img = document.getElementById('imagePreviewImg');
+            if (!overlay || !img) return;
+            img.src = src;
+            img.alt = 'معرض الصور';
+            overlay.classList.add('active');
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImagePreview() {
+            const overlay = document.getElementById('imagePreviewOverlay');
+            if (!overlay) return;
+            overlay.classList.remove('active');
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // ==========================================
+        // EXPOSE
+        // ==========================================
+        window.__portfolioData = {
+            projects: projectsData,
+            skills: skillsData,
+            renderProjects,
+            showToast,
+            setLanguage,
+            setTheme,
+            currentLang: () => currentLang,
+            openProjectDetail,
+            closeProjectDetail
+        };
+    </script>
+
+</body>
+</html>

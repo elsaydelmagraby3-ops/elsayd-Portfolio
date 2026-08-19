@@ -1,0 +1,16 @@
+version https://git-lfs.github.com/spec/v1
+oid sha256:fd2d0d8afa2733983ab81e0ba0a84b1bddd23c6e2635c24c5882aa8127a0d094
+size 291
+*.html !text !filter !merge !diff
+*.txt !text !filter !merge !diff
+*.jpg !text !filter !merge !diff
+*.jpeg !text !filter !merge !diff
+*.jfif !text !filter !merge !diff
+*.png !text !filter !merge !diff
+*.webp !text !filter !merge !diff
+*.gif !text !filter !merge !diff
+*.bmp !text !filter !merge !diff
+*.avif !text !filter !merge !diff
+*.svg !text !filter !merge !diff
+*.htm !text !filter !merge !diff
+*.json !text !filter !merge !diff
